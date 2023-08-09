@@ -8,12 +8,12 @@ interface Props {
 	title: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+//const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const resolvedImageWithDomain = new URL(
-  "/Rolodex_screen.png",
-  Astro.site
-).toString();
+//const resolvedImageWithDomain = new URL(
+//  "/Rolodex_screen.png",
+//  Astro.url
+//);
 
 const { title } = Astro.props;
 
@@ -32,13 +32,13 @@ const makeTitle = title
     <SEO
       title={makeTitle}
       description="Local-first Personal Relationship Manager"
-      canonical={canonicalURL}
+      canonical={"https://rolodex.shovel.company"}
       openGraph={{
         basic: {
-          url: canonicalURL,
+        url: "https://rolodex.shovel.company",
           type: "website",
           title: `Rolodex`,
-          image: resolvedImageWithDomain,
+          image: "https://rolodex.shovel.comapny/Rolodex_screen.png",
         },
         image: {
           alt: "Rolodex Homepage Screenshot",

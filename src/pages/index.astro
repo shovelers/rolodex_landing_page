@@ -1,44 +1,76 @@
 ---
 import Layout from '../layouts/layout.astro';
-import Features from '../components/features.astro';
 import { Picture } from '@astrojs/image/components';
 import appImg from '/public/rolodex_contact.png';
-import grphImg from '/public/rolodex_graph.png'
+import grphImg from '/public/rolodex_graph.png';
+import { Icon } from "astro-icon";
+
+const features = [
+{
+    title: "Share",
+    description:
+    "Your party planner with friends or emergency contacts with family",
+    icon: "bx:bxs-comment-check",
+  },
+  {
+    title: "Introduce",
+    description:
+    "Refer a prospective hire, help history nerds meet or ask a friend for a warm intro",
+    icon: "bx:bxs-conversation",
+  },
+  {
+    title: "Search",
+    description:
+    "Find an expert, mutuals connections, or someone's wedding photographer",
+    icon: "bx:bxs-search",
+  },
+  
+];
 ---
 <div class="flex justify-between mx-auto p-4 w-full md:w-2/3">
-  <p class="text-2xl font-bold tracking-tight">Rolo/dex</p>
+  <p class="text-4xl font-bold tracking-tight">Rolo/dex</p>
   <p class="px-4 py-2 bg-black text-white text-semibold rounded-lg hidden">Join</p>
 </div>
 
 <Layout title="Rolo/dex">
   <main class="mx-auto w-2/3 antialiased flex justify-center items-center text-center">
     <div>
-      <div class="grid lg:grid-cols-2 md:my-16">
-        <div class="text-start space-y-4 flex flex-col justify-evenly">
-          <p class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">Build better relationships</p>
-          <p class="text-xl text-slate-600">Visualise your network and surface organic actions with your connections.</p>
+      <div class="grid lg:grid-cols-2 md:my-4 gap-12">
+        <div class="text-start space-y-6 flex flex-col justify-evenly">
+          <p class="text-4xl lg:text-5xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">Build better relationships</p>
+          <p class="text-2xl">Rolodex is a shared contact book and private social graph for your circle</p>
           <div class="flex flex-row gap-1 md:gap-4 justify-between items-center">
-            <a href="https://tally.so/r/merrXE" target="_blank" class="bg-black text-white font-medium rounded-lg text-sm px-2.5 md:px-5 py-2 md:py-2.5 text-center md:mr-0">
+            <a href="https://tally.so/r/mZNdjA" target="_blank" class="bg-black text-white font-medium rounded-lg text-sm px-2.5 md:px-5 py-2 md:py-2.5 text-center md:mr-0">
               Sign up for early access
             </a>
           </div>
         </div>
-        <div class="flex flex-row justify-center space-x-2 hidden md:flex">
-          <Picture
-            src={appImg}
-            widths={[50, 100, 200]}
-            sizes="(max-width: 200px) 100vw, 200px"
-            alt="descriptive text"
-          />
-          <Picture
-            src={grphImg}
-            widths={[50, 100, 200]}
-            sizes="(max-width: 200px) 100vw, 200px"
-            alt="descriptive text"
-          />
+        <div class="flex flex-row justify-center space-x-2 md:flex">
+          <iframe class="w-full border-2 rounded-lg" src="https://www.youtube.com/embed/6MQ-SpqG62I?si=v093GaRs8PfK1zrF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
-      <Features />
+      
+      
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+        {
+          features.map((item) => (
+            <div class="flex gap-2 items-start">
+              <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+                <Icon class="text-white" name={item.icon} />
+              </div>
+              <div>
+                <h3 class="font-bold text-2xl">{item.title}</h3>{" "}
+                <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-16 md:mt-16">           
+        <!-- <div class="text-start space-y-4 flex flex-col justify-evenly"></div> -->
+        <p class="text-xl text-slate-600">Rolodex is truly private and local-first. Carry your graph with you, forever.</p> 
+      </div>      
     </div>
   </main>
 </Layout>
